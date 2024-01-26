@@ -39,6 +39,8 @@ The ST25DV Discovery kit provides the following hardware components:
   - USB micro or mini connector for board powering
   - Demonstration edition (optional add-on module) with Bluetooth Low Energy module, Wi-Fi ® module and JTAG 20 pin connector
 
+It exists in two variants, MB1283 and MB1285.
+
 - Antenna board: ST25DV_Discovery_ANT_C5:
 
   - 40 mm x 24 mm, 13.56 MHz inductive antenna etched on the PCB

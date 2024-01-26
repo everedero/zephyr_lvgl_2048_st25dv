@@ -22,10 +22,6 @@ LOG_MODULE_REGISTER(sample, LOG_LEVEL_INF);
 /* Declare device tree nodes */
 #include <zephyr/devicetree.h>
 #include <zephyr/drivers/gpio.h>
-#if !DT_NODE_EXISTS(DT_NODELABEL(displ_reset))
-#error "Overlay for gpio custom node not properly defined."
-#endif
-#define LCD_RST_NODE DT_NODELABEL(displ_reset)
 
 // Gardening spi
 #include <zephyr/drivers/spi.h>
@@ -232,18 +228,6 @@ int main(void)
 
 	LOG_INF("Display sample for %s", display_dev->name);
 	display_get_capabilities(display_dev, &capabilities);
-
-	/* GPIOS out */
-	static const struct gpio_dt_spec disp_rst_gpio = GPIO_DT_SPEC_GET(LCD_RST_NODE, gpios);
-
-	if (!gpio_is_ready_dt(&disp_rst_gpio)) {
-		LOG_ERR("Gpio not ready");
-	}
-	// Maybe it is reversed, rst and not nrst
-        ret = gpio_pin_set_dt(&disp_rst_gpio, 1);
-        if (ret < 0) {
-		LOG_ERR("Issue with pin set");
-        }
 
 	// Test stuff
 	display_blanking_on(display_dev);
