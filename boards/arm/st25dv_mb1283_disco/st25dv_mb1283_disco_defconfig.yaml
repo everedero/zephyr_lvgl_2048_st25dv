@@ -1,5 +1,5 @@
-identifier: st25dv_disco
-name: ST ST25DV Discovery
+identifier: st25dv_mb1283_disco
+name: ST ST25DV MB1283 Discovery
 type: mcu
 arch: arm
 toolchain:

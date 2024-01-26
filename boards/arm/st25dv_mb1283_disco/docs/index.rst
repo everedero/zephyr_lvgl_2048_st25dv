@@ -1,7 +1,7 @@
 .. _stm25dv_disco_board:
 
-ST ST25DV Discovery
-#######################
+ST ST25DV Discovery, MB1283 version
+###################################
 
 Overview
 ********
@@ -15,9 +15,9 @@ The ST25DV-DISCOVERY is a demonstration kit to evaluate the features and capabil
 It is based on the NFC ST25DV04K device embedded on a daughter card using a Class 5 antenna and a STM32 processor driving a mother board.
 
 
-.. image:: img/st25dv_disco.jpg
+.. image:: img/st25dv_mb1283_disco.jpg
      :align: center
-     :alt: ST25DV_DISCO
+     :alt: ST25DV_MB1283_DISCO
 
 Hardware
 ********

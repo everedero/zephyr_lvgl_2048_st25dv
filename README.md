@@ -30,7 +30,7 @@ where `$BOARD` is the target board.
 The custom board is located in the boards subfolder.
 
 ```
-BOARD="st25dv_disco"
+BOARD="st25dv_mb1283_disco"
 ```
 
 A sample debug configuration is also provided. You can apply it by running:
@@ -45,7 +45,7 @@ west flash
 
 #### Local applications to build
 ```shell
-BOARD="st25dv_disco"
+BOARD="st25dv_mb1283_disco"
 west build -b $BOARD -p always ../uart_app -DOVERLAY_CONFIG=prj.conf
 ```
 

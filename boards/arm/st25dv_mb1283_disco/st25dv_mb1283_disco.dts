@@ -11,7 +11,7 @@
 
 / {
 	model = "ST ST25DV Discovery Kit with MB1283";
-	compatible = "st,st25dv_disco", "st,stm32f405", "st,stm32f4";
+	compatible = "st,st25dv_mb1283_disco", "st,stm32f405", "st,stm32f4";
 
 	chosen {
 		zephyr,console = &usart6;
