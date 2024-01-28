@@ -61,6 +61,8 @@ screen /dev/ttyACM0 115200
 STM32_Programmer_CLI -c port=SWD freq=4000 --download ./build/zephyr/zephyr.elf
 ```
 
+You may need to push the black reset button to download correctly, release it before it times out.
+
 * Reset
 ```
 STM32_Programmer_CLI -c port=SWD freq=4000 -rst
@@ -72,3 +74,9 @@ You can read target memory with:
 STM32_Programmer_CLI -c port=SWD freq=4000 -r32 0x08000000 0x40
 ```
 Note that -r, -r8 and -r16 sometimes return only zeros, make sure you are using -r32.
+
+```
+west build -b $BOARD ./lvgl_demos/ -p always -- -DCONFIG_LV_Z_DEMO_MUSIC=y
+west build -b $BOARD ./lvgl_demos/ -p always -- -DCONFIG_LV_Z_DEMO_BENCHMARK=y
+
+```

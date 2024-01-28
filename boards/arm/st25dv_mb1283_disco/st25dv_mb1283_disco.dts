@@ -133,11 +133,11 @@
 		reg = <0>;
 		cmd-data-gpios = <&gpioc 0 GPIO_ACTIVE_LOW>;
 		reset-gpios = <&gpioc 1 GPIO_ACTIVE_LOW>;
-		pixel-format = <1>;//RGB666
+		pixel-format = <1>;
 		rotation = <0>;
 		width = <240>;
 		height = <320>;
-                duplex = <0x800>; //SPI_HALF_DUPLEX;
+                duplex = <0x800>;
 	};
 };
 
