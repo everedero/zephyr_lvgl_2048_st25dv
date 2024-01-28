@@ -33,7 +33,7 @@
 		};
 	};
 
-	gpio_keys {
+	buttons: gpio_keys {
 		compatible = "gpio-keys";
 		blue_button: button_1 {
 			label = "Home";
