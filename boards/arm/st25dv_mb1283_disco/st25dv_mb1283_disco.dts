@@ -98,7 +98,6 @@
 	apb1-prescaler = <4>;
 	apb2-prescaler = <2>;
 };
-// TODO check clock conf
 
 &usart6 {
 	pinctrl-0 = <&usart6_tx_pc6 &usart6_rx_pc7>;
@@ -168,8 +167,5 @@
 zephyr_udc0: &usbotg_fs {
 	pinctrl-0 = <&usb_otg_fs_id_pa10 &usb_otg_fs_dm_pa11 &usb_otg_fs_dp_pa12>;
 	pinctrl-names = "default";
-        // Adding PLL fixes the "clock domain not found" issue
-        //clocks = <&rcc STM32_CLOCK_BUS_AHB1 0x20000000>,
-        //         <&rcc STM32_SRC_PLL_Q CK48M_SEL(0)>;
 	status = "okay";
 };
