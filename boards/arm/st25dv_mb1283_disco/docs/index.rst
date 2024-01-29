@@ -7,12 +7,14 @@ Overview
 ********
 
 The ST25DV04K device is a dynamic NFC/RFID tag IC with a dual interface. It embeds a
-4 Kbits EEPROM memory. It can be operated from an I 2 C interface, or by a 13.56 MHz
+4 Kbits EEPROM memory. It can be operated from an I2C interface, or by a 13.56 MHz
 RFID reader, or by a NFC phone. The ST25DV04K Class 5 antenna daughter card, included
 in the kit, can be replaced by Class 1 or Class 6 antennas.
 
-The ST25DV-DISCOVERY is a demonstration kit to evaluate the features and capabilities of the ST25DV series.
-It is based on the NFC ST25DV04K device embedded on a daughter card using a Class 5 antenna and a STM32 processor driving a mother board.
+The ST25DV-DISCOVERY is a demonstration kit to evaluate the features and capabilities
+of the ST25DV series.
+It is based on the NFC ST25DV04K device embedded on a daughter card using a Class 5 antenna
+and a STM32 processor driving a mother board.
 
 
 .. image:: img/st25dv_mb1283_disco.jpg
@@ -37,7 +39,8 @@ The ST25DV Discovery kit provides the following hardware components:
   - ST link mini USB
   - User micro USB
   - USB micro or mini connector for board powering
-  - Demonstration edition (optional add-on module) with Bluetooth Low Energy module, Wi-Fi ® module and JTAG 20 pin connector
+  - Demonstration edition (optional add-on module) with Bluetooth Low Energy module,
+    Wi-Fi ® module and JTAG 20 pin connector
 
 It exists in two variants, MB1283 and MB1285.
 
