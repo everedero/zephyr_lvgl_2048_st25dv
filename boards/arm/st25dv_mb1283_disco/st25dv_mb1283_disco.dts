@@ -43,27 +43,27 @@
 		sel_button: button_2 {
 			label = "Sel";
 			gpios = <&gpioe 8 GPIO_ACTIVE_LOW>;
-			zephyr,code = <INPUT_KEY_1>;
+			zephyr,code = <INPUT_KEY_ENTER>;
 		};
 		left_button: button_3 {
 			label = "Left";
 			gpios = <&gpioe 9 GPIO_ACTIVE_LOW>;
-			zephyr,code = <INPUT_KEY_2>;
+			zephyr,code = <INPUT_KEY_LEFT>;
 		};
 		right_button: button_4 {
 			label = "Right";
 			gpios = <&gpioe 10 GPIO_ACTIVE_LOW>;
-			zephyr,code = <INPUT_KEY_3>;
+			zephyr,code = <INPUT_KEY_RIGHT>;
 		};
 		up_button: button_5 {
 			label = "Up";
 			gpios = <&gpioe 11 GPIO_ACTIVE_LOW>;
-			zephyr,code = <INPUT_KEY_4>;
+			zephyr,code = <INPUT_KEY_UP>;
 		};
 		down_button: button_6 {
 			label = "Down";
 			gpios = <&gpioe 12 GPIO_ACTIVE_LOW>;
-			zephyr,code = <INPUT_KEY_5>;
+			zephyr,code = <INPUT_KEY_DOWN>;
 		};
 	};
 
