@@ -52,12 +52,12 @@
 		};
 		right_button: button_4 {
 			label = "Right";
-			gpios = <&gpioe 10 GPIO_ACTIVE_LOW>;
+			gpios = <&gpioe 11 GPIO_ACTIVE_LOW>;
 			zephyr,code = <INPUT_KEY_RIGHT>;
 		};
 		up_button: button_5 {
 			label = "Up";
-			gpios = <&gpioe 11 GPIO_ACTIVE_LOW>;
+			gpios = <&gpioe 10 GPIO_ACTIVE_LOW>;
 			zephyr,code = <INPUT_KEY_UP>;
 		};
 		down_button: button_6 {
