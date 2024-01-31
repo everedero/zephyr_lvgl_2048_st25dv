@@ -78,5 +78,6 @@ Note that -r, -r8 and -r16 sometimes return only zeros, make sure you are using 
 ```
 west build -b $BOARD ./lvgl_demos/ -p always -- -DCONFIG_LV_Z_DEMO_MUSIC=y
 west build -b $BOARD ./lvgl_demos/ -p always -- -DCONFIG_LV_Z_DEMO_BENCHMARK=y
+west build -b native_sim_64 ./lvgl_demos/ -p always -- -DCONFIG_LV_Z_DEMO_BENCHMARK=y
 
 ```
