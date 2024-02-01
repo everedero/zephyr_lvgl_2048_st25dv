@@ -33,14 +33,20 @@ The custom board is located in the boards subfolder.
 BOARD="st25dv_mb1283_disco"
 ```
 
-A sample debug configuration is also provided. You can apply it by running:
+A sample with lvgl support is provided. You can apply it by running:
 
-```shell
-west build -b $BOARD -p always ../uart_app -- -DOVERLAY_CONFIG=prj.conf
+```
+west build -b $BOARD -p always ./lvgl/ -p always
 ```
 
 ```shell
 west flash
+```
+
+For simulation:
+```
+west build -b native_sim_64 -p always ./lvgl/ -p always
+west build -t run
 ```
 
 #### Local applications to build
@@ -74,10 +80,3 @@ You can read target memory with:
 STM32_Programmer_CLI -c port=SWD freq=4000 -r32 0x08000000 0x40
 ```
 Note that -r, -r8 and -r16 sometimes return only zeros, make sure you are using -r32.
-
-```
-west build -b $BOARD ./lvgl_demos/ -p always -- -DCONFIG_LV_Z_DEMO_MUSIC=y
-west build -b $BOARD ./lvgl_demos/ -p always -- -DCONFIG_LV_Z_DEMO_BENCHMARK=y
-west build -b native_sim_64 ./lvgl_demos/ -p always -- -DCONFIG_LV_Z_DEMO_BENCHMARK=y
-
-```

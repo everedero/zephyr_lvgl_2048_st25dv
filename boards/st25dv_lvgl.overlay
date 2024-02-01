@@ -5,7 +5,6 @@
  */
 
 #include <zephyr/dt-bindings/input/input-event-codes.h>
-/* Needs very up-to-date version 3.5.99*/
 #include <zephyr/dt-bindings/lvgl/lvgl.h>
 
 / {
@@ -20,7 +19,7 @@
 		input = <&buttons>;
 		input-codes = <INPUT_KEY_RIGHT INPUT_KEY_LEFT INPUT_KEY_UP INPUT_KEY_DOWN INPUT_KEY_ENTER INPUT_KEY_0>;
 		lvgl-codes = <LV_KEY_RIGHT LV_KEY_LEFT LV_KEY_UP LV_KEY_DOWN LV_KEY_ENTER LV_KEY_ESC>;
-//		status = "okay";
+		status = "okay";
 	};
 
 };
