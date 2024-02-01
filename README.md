@@ -36,16 +36,16 @@ BOARD="st25dv_mb1283_disco"
 A sample with lvgl support is provided. You can apply it by running:
 
 ```
-west build -b $BOARD -p always ./lvgl/ -p always
+west build -b $BOARD -p always ./lvgl -p always
 ```
 
 ```shell
 west flash
 ```
 
-For simulation:
+For native emulation, go to ~/zephyrproject/zephyr/samples/subsys/display:
 ```
-west build -b native_sim_64 -p always ./lvgl/ -p always
+west build -b native_sim_64 -p always ./lvgl -p always
 west build -t run
 ```
 
