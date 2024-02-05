@@ -9,15 +9,13 @@ lv_100ask_2048 is a 2048 game based on lvgl.
 </p>
 
 
-**English** | [中文](./README_zh.md) |
-
 
 # Introduction
 **lv_100ask_2048** features：
 
 - Custom size
 - Support touch gesture control
-- Support key control(LV_KEY_UP、LV_KEY_DOWN、LV_KEY_LEFT、LV_KEY_RIGH)
+- Support key control(LV\_KEY\_UP、LV\_KEY\_DOWN、LV\_KEY\_LEFT、LV\_KEY\_RIGH)
 - Get game scores
 - Get game status
 - Get the best tile of the current merge
