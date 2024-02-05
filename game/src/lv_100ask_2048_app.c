@@ -44,7 +44,7 @@ void lv_100ask_2048_simple_test(void)
     lv_obj_set_size(obj_2048, 200, 200);
     lv_obj_center(obj_2048);
 
-    /*Information*/
+    /*Information area*/
     lv_obj_t * label = lv_label_create(lv_scr_act());
     lv_label_set_recolor(label, true);
     lv_label_set_text_fmt(label, "SCORE: #ff00ff %d #", lv_100ask_2048_get_score(obj_2048));
@@ -52,7 +52,7 @@ void lv_100ask_2048_simple_test(void)
 
     lv_obj_add_event_cb(obj_2048, game_2048_event_cb, LV_EVENT_ALL, label);
 
-    /*New Game*/
+    /*New Game button widget*/
     lv_obj_t * btn = lv_btn_create(lv_scr_act());
     lv_obj_align_to(btn, obj_2048, LV_ALIGN_OUT_TOP_LEFT, 0, -25);
     lv_obj_add_event_cb(btn, new_game_btn_event_handler, LV_EVENT_CLICKED, obj_2048);
