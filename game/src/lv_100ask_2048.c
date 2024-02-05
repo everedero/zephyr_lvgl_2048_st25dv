@@ -374,7 +374,7 @@ static void init_matrix_num(uint16_t matrix[MATRIX_SIZE][MATRIX_SIZE])
 		}
 	}
 
-	/* 初始化两个随机位置的随机数 */
+	/* Initialize two random numbers at random positions */
 	addRandom(matrix);
 	addRandom(matrix);
 }
@@ -435,41 +435,46 @@ static void update_btnm_map(char * btnm_map[], uint16_t matrix[MATRIX_SIZE][MATR
 }
 
 
-//10进制
+//10 hex
 static char* int_to_str(char * str, uint16_t num)
 {
-	uint8_t i = 0;//指示填充str
-	if(num < 0)//如果num为负数，将num变正
+	uint8_t i = 0;//Indicates str
+	if(num < 0)//If num is a negative number, make num positive
 	{
 		num = -num;
 		str[i++] = '-';
 	}
-	//转换
+	//Convert
 	do
 	{
-		str[i++] = num%10+48;//取num最低位 字符0~9的ASCII码是48~57；简单来说数字0+48=48，ASCII码对应字符'0'
-		num /= 10;//去掉最低位
-	}while(num);//num不为0继续循环
+		//Take the lowest bit of num. The ASCII code of characters 0~9 is
+		//48~57; simply speaking, the number 0+48=48, the ASCII code
+		//corresponds to the character '0'
+		str[i++] = num%10+48;
+		num /= 10;//Remove the lowest bit
+	}while(num);//If num is not 0, continue looping
 
 	str[i] = '\0';
 
-	//确定开始调整的位置
+	//Determine where to start adjusting
 	uint8_t j = 0;
-	if(str[0] == '-')//如果有负号，负号不用调整
+	if(str[0] == '-')//If there is a negative sign, the negative sign does not need to be adjusted.
 	{
-		j = 1;//从第二位开始调整
-		++i;//由于有负号，所以交换的对称轴也要后移1位
+		j = 1;//Adjust from the second position
+		++i;//Because of the negative sign, the symmetry axis of the exchange must also be shifted back by 1 position.
 	}
-	//对称交换
+	//Symmetric exchange
 	for(; j < (i / 2); j++)
 	{
-		//对称交换两端的值 其实就是省下中间变量交换a+b的值：a=a+b;b=a-b;a=a-b;
+		//Symmetrically exchanging the values at both ends actually saves the
+		//intermediate variables and exchanges the values of a+b:
+		//a=a+b;b=a-b;a=a-b;
 		str[j] = str[j] + str[i-1-j];
 		str[i-1-j] = str[j] - str[i-1-j];
 		str[j] = str[j] - str[i-1-j];
 	}
 
-	return str;//返回转换后的值
+	return str;//Returns the converted value
 }
 
 
