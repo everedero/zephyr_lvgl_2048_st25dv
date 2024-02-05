@@ -14,6 +14,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <zephyr/kernel.h>
 
 /*********************
  *      DEFINES
@@ -387,7 +388,7 @@ static void addRandom(uint16_t matrix[MATRIX_SIZE][MATRIX_SIZE])
 	uint16_t n, list[MATRIX_SIZE * MATRIX_SIZE][2];
 
 	if (!initialized) {
-		srand(0);//time(NULL));
+		srand(k_uptime_get());
 		initialized = true;
 	}
 
