@@ -52,7 +52,7 @@ west build -t run
 #### Local applications to build
 ```shell
 BOARD="st25dv_mb1283_disco"
-west build -b $BOARD -p always ../uart_app -DOVERLAY_CONFIG=prj.conf
+west build -b $BOARD -p always ./game -DOVERLAY_CONFIG=prj.conf
 ```
 
 For now the app uses the first UART, which can be accessed via the same USB port than ST-Link.
