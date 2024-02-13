@@ -1,5 +1,9 @@
 # ST ST25DV Discovery kit support for Zephyr RTOS
 
+Runs a nice 2048 game on a discontinued ST eval kit, using Zephyr RTOS and LVGL module.
+
+The game app is partially forked from [lv\_lib\_100ask](https://github.com/100askTeam/lv_lib_100ask.git)
+
 ## Getting Started
 
 Before getting started, make sure you have a proper Zephyr development
@@ -19,40 +23,17 @@ Then call Zephyr environment init script
 source ~/zephyrproject/zephyr/zephyr-env.sh
 ```
 
-### Build & Run
-
-The application can be built by running:
-
-```shell
-west build -b $BOARD ../[APP_FOLDER]
-```
-where `$BOARD` is the target board.
-The custom board is located in the boards subfolder.
-
-```
-BOARD="st25dv_mb1283_disco"
-```
-
-A sample with lvgl support is provided. You can apply it by running:
-
-```
-west build -b $BOARD -p always ./lvgl -p always
-```
-
-```shell
-west flash
-```
-
-For native emulation, go to ~/zephyrproject/zephyr/samples/subsys/display:
-```
-west build -b native_sim_64 -p always ./lvgl -p always
-west build -t run
-```
-
 #### Local applications to build
 ```shell
 BOARD="st25dv_mb1283_disco"
 west build -b $BOARD -p always ./game -DOVERLAY_CONFIG=prj.conf
+```
+
+"west flash" does not work, flash using STM32\_Programmer\_CLI - it is somewhere
+in your system when you install STM32CubeProgrammer.
+
+```shell
+STM32_Programmer_CLI -c port=SWD freq=4000 --download ./build/zephyr/zephyr.elf
 ```
 
 For now the app uses the first UART, which can be accessed via the same USB port than ST-Link.
@@ -61,7 +42,7 @@ screen /dev/ttyACM0 115200
 ```
 
 #### Troubleshooting
-* Flash using STM32 programmer
+* Flash using STM32 programmer fails
 
 ```
 STM32_Programmer_CLI -c port=SWD freq=4000 --download ./build/zephyr/zephyr.elf
@@ -73,6 +54,12 @@ You may need to push the black reset button to download correctly, release it be
 ```
 STM32_Programmer_CLI -c port=SWD freq=4000 -rst
 ```
+
+* Display issues
+
+A weird issue can prevent all the display SPI messages to be sent to the peripheral (missing 0x2a and 0x2b messages),
+resulting in a horizontal line being updated instead of squares on all the screen.
+If this issue persists, try the no\_mipi\_update branch with Zephyr commit #6fc6b30f or prior.
 
 #### Verifying flashed memory
 You can read target memory with:
