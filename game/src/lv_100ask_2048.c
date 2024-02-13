@@ -15,6 +15,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <zephyr/kernel.h>
+#include <lvgl_input_device.h>
 
 /*********************
  *      DEFINES
@@ -37,6 +38,11 @@
 #define LV_100ASK_2048_NUMBER_512_COLOR 	lv_color_hex(0xedc850)
 #define LV_100ASK_2048_NUMBER_1024_COLOR 	lv_color_hex(0xedc53f)
 #define LV_100ASK_2048_NUMBER_2048_COLOR 	lv_color_hex(0xedc22e)
+
+#ifdef CONFIG_LV_Z_KEYPAD_INPUT
+static const struct device *lvgl_keypad =
+	DEVICE_DT_GET(DT_COMPAT_GET_ANY_STATUS_OKAY(zephyr_lvgl_keypad_input));
+#endif /* CONFIG_LV_Z_KEYPAD_INPUT */
 
 /**********************
  *      TYPEDEFS
@@ -215,6 +221,16 @@ static void lv_100ask_2048_constructor(const lv_obj_class_t * class_p, lv_obj_t 
 
     lv_btnmatrix_set_map(game_2048->btnm, game_2048->btnm_map);
     lv_btnmatrix_set_btn_ctrl_all(game_2048->btnm, LV_BTNMATRIX_CTRL_DISABLED);
+
+#ifdef CONFIG_LV_Z_KEYPAD_INPUT
+	/* Keypad input system */
+	lv_group_t *btn_matrix_group;
+
+	btn_matrix_group = lv_group_create();
+	lv_group_add_obj(btn_matrix_group, game_2048->btnm);
+	lv_indev_set_group(lvgl_input_get_indev(lvgl_keypad), btn_matrix_group);
+
+#endif /* CONFIG_LV_Z_KEYPAD_INPUT */
 
     lv_obj_add_event_cb(game_2048->btnm, btnm_event_cb, LV_EVENT_ALL, NULL);
 
