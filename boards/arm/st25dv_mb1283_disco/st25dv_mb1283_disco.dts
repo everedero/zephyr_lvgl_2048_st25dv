@@ -38,7 +38,7 @@
 		compatible = "gpio-keys";
 		blue_button: button_1 {
 			label = "Home";
-			gpios = <&gpioc 14 GPIO_ACTIVE_HIGH>;
+			gpios = <&gpioc 14 GPIO_ACTIVE_LOW>;
 			zephyr,code = <INPUT_KEY_0>;
 		};
 		sel_button: button_2 {
