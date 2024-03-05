@@ -12,27 +12,27 @@
 		compatible = "gpio-keys";
 
 		blue_button: button_1 {
-			gpios = <&gpio0 1 GPIO_ACTIVE_HIGH>;
+			gpios = <&gpio0 0 GPIO_ACTIVE_HIGH>;
 			zephyr,code = <INPUT_KEY_0>;
 		};
 		sel_button: button_2 {
-			gpios = <&gpio0 2 GPIO_ACTIVE_HIGH>;
+			gpios = <&gpio0 1 GPIO_ACTIVE_HIGH>;
 			zephyr,code = <INPUT_KEY_ENTER>;
 		};
 		left_button: button_3 {
-			gpios = <&gpio0 3 GPIO_ACTIVE_HIGH>;
+			gpios = <&gpio0 2 GPIO_ACTIVE_HIGH>;
 			zephyr,code = <INPUT_KEY_LEFT>;
 		};
 		right_button: button_4 {
-			gpios = <&gpio0 4 GPIO_ACTIVE_HIGH>;
+			gpios = <&gpio0 3 GPIO_ACTIVE_HIGH>;
 			zephyr,code = <INPUT_KEY_RIGHT>;
 		};
 		up_button: button_5 {
-			gpios = <&gpio0 5 GPIO_ACTIVE_HIGH>;
+			gpios = <&gpio0 4 GPIO_ACTIVE_HIGH>;
 			zephyr,code = <INPUT_KEY_UP>;
 		};
 		down_button: button_6 {
-			gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>;
+			gpios = <&gpio0 5 GPIO_ACTIVE_HIGH>;
 			zephyr,code = <INPUT_KEY_DOWN>;
 		};
 	};
@@ -47,17 +47,16 @@
 };
 
 &gpio0 {
-	ngpios = <7>;
+	ngpios = <6>;
 
 	sdl_gpio {
 		status = "okay";
 		compatible = "zephyr,gpio-emul-sdl";
-		/* Skip pin 0 with the unknown code 0 */
 		/* Scancodes correspond to USB HID decimal codes */
 		/* not the usual AT-101 input codes. */
 		/* Here, we map Space, Enter, Left, Right, Up and Down */
 		/* from HID keybord to GPIO0 1 to 6 */
-		scancodes = <0 44 40 80 79 82 81>;
+		scancodes = <44 40 80 79 82 81>;
 	};
 };
 
