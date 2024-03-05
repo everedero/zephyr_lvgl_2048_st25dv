@@ -59,7 +59,15 @@ STM32_Programmer_CLI -c port=SWD freq=4000 -rst
 
 A weird issue can prevent all the display SPI messages to be sent to the peripheral (missing 0x2a and 0x2b messages),
 resulting in a horizontal line being updated instead of squares on all the screen.
-If this issue persists, try the no\_mipi\_update branch with Zephyr commit #6fc6b30f or prior.
+If this issue persists, several alternatives:
+
+- Try the no\_mipi\_update branch with Zephyr commit #6fc6b30f or prior
+
+- Or disable STM32 SPI interrupts
+
+    CONFIG_SPI_STM32_INTERRUPT=n
+
+- Or disable spinlock call in drivers/mipi_dbi/mipi_dbi_spi.c:61 and 127
 
 #### Verifying flashed memory
 You can read target memory with:
