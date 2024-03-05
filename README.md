@@ -41,6 +41,20 @@ For now the app uses the first UART, which can be accessed via the same USB port
 screen /dev/ttyACM0 115200
 ```
 
+In order to run the native simulation, change the overlay in CMakelists.conf:
+
+```
+set(DTC_OVERLAY_FILE "${CMAKE_CURRENT_SOURCE_DIR}/../boards/native_sim_64.overlay")
+```
+
+And run:
+```
+west build -b native_sim_64 -p always ./game -DOVERLAY_CONFIG=prj.conf
+./build/zephyr/zephyr.exe
+```
+
+Keyboard arrow keys and enter are mapped to 5-way buttons directions.
+
 #### Troubleshooting
 * Flash using STM32 programmer fails
 
