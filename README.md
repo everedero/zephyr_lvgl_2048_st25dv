@@ -4,6 +4,8 @@ Runs a nice 2048 game on a discontinued ST eval kit, using Zephyr RTOS and LVGL 
 
 The game app is partially forked from [lv\_lib\_100ask](https://github.com/100askTeam/lv_lib_100ask.git)
 
+Current app is compatible with Zephyr 3.6.0-rc2 (with hwv1).
+
 ## Getting Started
 
 Before getting started, make sure you have a proper Zephyr development
@@ -71,17 +73,10 @@ STM32_Programmer_CLI -c port=SWD freq=4000 -rst
 
 * Display issues
 
-A weird issue can prevent all the display SPI messages to be sent to the peripheral (missing 0x2a and 0x2b messages),
+A synchronisation issue can prevent all the display SPI messages to be sent to the peripheral (missing 0x2a and 0x2b messages),
 resulting in a horizontal line being updated instead of squares on all the screen.
-If this issue persists, several alternatives:
 
-- Try the no\_mipi\_update branch with Zephyr commit #6fc6b30f or prior
-
-- Or disable STM32 SPI interrupts
-
-    CONFIG_SPI_STM32_INTERRUPT=n
-
-- Or disable spinlock call in drivers/mipi_dbi/mipi_dbi_spi.c:61 and 127
+Issue https://github.com/zephyrproject-rtos/zephyr/issues/68815 is fixed in Zephyr version > 3.6.0.
 
 #### Verifying flashed memory
 You can read target memory with:
