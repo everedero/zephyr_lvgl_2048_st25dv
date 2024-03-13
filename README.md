@@ -1,10 +1,10 @@
-# ST ST25DV Discovery kit support for Zephyr RTOS
+# 2048 on ST ST25DV Discovery kit
 
 Runs a nice 2048 game on a discontinued ST eval kit, using Zephyr RTOS and LVGL module.
 
 The game app is partially forked from [lv\_lib\_100ask](https://github.com/100askTeam/lv_lib_100ask.git)
 
-Current app is compatible with Zephyr 3.6.0-rc2 (with hwv1).
+Current app is compatible with Zephyr after 3.6 >= #4809491b, which adds st25dv support.
 
 ## Getting Started
 
