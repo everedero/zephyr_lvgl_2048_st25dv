@@ -1,4 +1,4 @@
-.. _stm25dv_disco_board:
+.. _st25dv_mb1283_disco_board:
 
 ST ST25DV Discovery, MB1283 version
 ###################################
@@ -16,10 +16,12 @@ of the ST25DV series.
 It is based on the NFC ST25DV04K device embedded on a daughter card using a Class 5 antenna
 and a STM32 processor driving a mother board.
 
-
 .. image:: img/st25dv_mb1283_disco.jpg
      :align: center
      :alt: ST25DV_MB1283_DISCO
+
+.. note::
+   The ST25DV itself is not implemented yet.
 
 Hardware
 ********
@@ -44,7 +46,7 @@ The ST25DV Discovery kit provides the following hardware components:
 
 It exists in two variants, MB1283 and MB1285.
 
-- Antenna board: ST25DV_Discovery_ANT_C5:
+- Antenna daughter board: ST25DV_Discovery_ANT_C5:
 
   - 40 mm x 24 mm, 13.56 MHz inductive antenna etched on the PCB
   - ST25DV04K Dynamic NFC / RFID tag
@@ -52,51 +54,58 @@ It exists in two variants, MB1283 and MB1285.
   - Energy harvesting output (VOUT) with a 10nF capacitance filtering circuit
   - GPO configurable as RF WIP/BUSY output, to indicate that an RF operation is ongoing
 
-Default Zephyr Peripheral Mapping:
-----------------------------------
+The antenna board can be removed, and its 14-pin 0.254mm header connector used as an eval kit header.
 
-- UART_1 TX/RX : PA9/PA10 (ST-Link Virtual Port Com)
-- UART_6 TX/RX : PC6/PC7 (Arduino Serial)
-- I2C1 SCL/SDA : PB8/PB9 (Arduino I2C)
-- I2C4 SCL/SDA : PD12/PB7 (Touchscreen FT6202, PI13 Interrupt Pin)
-- SPI2 SCK/MISO/MOSI : PA12/PB14/PB15 (Arduino SPI)
-- ETH : PA1, PA2, PA7, PC1, PC4, PC5, PG11, PG13, PG14
-- LD1 : PJ13
-- LD2 : PJ5
-- LD3 : PA12
-- LD4 : PD4
+Connections and IOs
+===================
+
+Default Zephyr Peripheral Mapping
+---------------------------------
+
+- UART_6 TX/RX : PC6/PC7 (ST-Link Virtual Port Com)
+- UART_2 TX/RX : PA2/PA3 (Available on J6 connector)
+- I2C1 SCL/SDA : PB6/PB7 (Touchscreen STMPE811, interrupt pin PB5)
+- SPI2 SCK/MOSI/CS : PB13/PC3/PB12 (LCD display FRD24048TP, reset pin PC1, DC pin PC0)
+- SPI1 SCK/MISO/MOSI/CS : PA5/PA6/PA7/PA4 (External ST25DV connector J6)
+- GPIO : PE8/PE9/PE10/PE11/PE12 (Joystick)
+- LD1 : PC13 (Orange led)
+- LD2 : PC4 (Yellow led)
+- GPIO : PE15/PE7 (Available on external ST25DV connector J6)
+- GPIO : PE14 (Available on J5 connector)
 
 Serial Port
 ===========
 
-The STM25DV Discovery kit has up to 8 UARTs. The Zephyr console output is assigned to UART1
-which connected to the onboard ST-LINK/V2 Virtual COM port interface. Default communication
-settings are 115200 8N1.
+The Zephyr console output and shell are assigned to UART6, which is connected to the
+onboard ST-LINK/V2 Virtual COM port interface.
+Default communication settings are 115200 8N1.
 
 Programming and Debugging
 *************************
 
-Applications for the ``stm32f769i_disco`` board configuration can be built and
+Applications for the ``st25dv_mb1283_disco`` board configuration can be built and
 flashed in the usual way (see :ref:`build_an_application` and
 :ref:`application_run` for more details).
+
+If programming fails, press the reset button (black) and release it while "west flash" is running.
 
 Flashing
 ========
 
-STM25DV Discovery kit includes an ST-LINK/V2 embedded debug tool interface.
+ST25DV Discovery kit includes an ST-LINK/V2 embedded debug tool interface.
 This interface is supported by the openocd version included in the Zephyr SDK.
 
-Flashing an application to STM25DV Discovery
--------------------------------------------
+Flashing an application to ST25DV Discovery
+--------------------------------------------
 
-First, connect the STM25DV Discovery kit to your host computer using
+First, connect the ST25DV Discovery kit to your host computer using
 the USB port to prepare it for flashing. Then build and flash your application.
 
 Here is an example for the :ref:`hello_world` application.
 
 .. zephyr-app-commands::
    :zephyr-app: samples/hello_world
-   :board: stm25dv_disco
+   :board: st25dv_mb1283_disco
    :goals: build flash
 
 Run a serial host program to connect with your board:
@@ -109,17 +118,17 @@ You should see the following message on the console:
 
 .. code-block:: console
 
-   TODO
+   Hello World! st25dv_mb1283_disco
 
 Debugging
 =========
 
-You can debug an application in the usual way.  Here is an example for the
+You can debug an application in the usual way. Here is an example for the
 :ref:`hello_world` application.
 
 .. zephyr-app-commands::
    :zephyr-app: samples/hello_world
-   :board: stm25dv_disco
+   :board: st25dv_mb1283_disco
    :goals: debug
 
 

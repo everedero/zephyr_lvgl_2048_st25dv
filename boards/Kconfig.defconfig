@@ -3,14 +3,10 @@
 # Copyright (c) 2024 Eve Redero
 # SPDX-License-Identifier: Apache-2.0
 
-#if BOARD_ST25DV_MB1283_DISCO
 if BOARD_ST25DV_MB1283_DISCO
-
-config BOARD
-	default "st25dv_mb1283_disco"
 
 config SPI_STM32_INTERRUPT
 	default y
 	depends on SPI
 
-endif # BOARD_STM25DV_MB1283_DISCO
+endif # BOARD_ST25DV_MB1283_DISCO

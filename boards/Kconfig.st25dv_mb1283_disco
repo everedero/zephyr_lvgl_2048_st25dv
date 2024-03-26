@@ -4,5 +4,4 @@
 # SPDX-License-Identifier: Apache-2.0
 
 config BOARD_ST25DV_MB1283_DISCO
-	bool "ST25DV discovery board with MB1283"
-	depends on SOC_STM32F405XG
+	select SOC_STM32F405XX
